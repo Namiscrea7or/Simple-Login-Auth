@@ -22,7 +22,10 @@ connectDB();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: '*', // Đảm bảo rằng chỉ cho phép domain frontend của bạn
+  methods: ['GET', 'POST'],
+}));
 
 app.use("/", authRouter);
 app.use("/", userRouter);
